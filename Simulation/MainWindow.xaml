@@ -1,0 +1,113 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Simulation"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="Simulation.MainWindow"
+        mc:Ignorable="d"
+        Title="Simulation" MinHeight="350" MinWidth="625" SizeChanged="Window_SizeChanged" Closing="Window_Closing" Loaded="Window_Loaded" Height="350.812" Width="0">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition />
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition />
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+			
+            <Grid Grid.Column="0" VerticalAlignment="Top" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Label x:Name="lblDatum" Content="Datum: " Height="50" Grid.Column="0"/>
+                <Button x:Name="btnStartStop" Content="Start" Width="60" Height="25" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnStartStop_Click"/>
+				<ListView x:Name="personen" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MouseUp="personen_MouseUp" IsSynchronizedWithCurrentItem="False" Grid.Row="1" Grid.ColumnSpan="2"/>
+            </Grid>
+
+            <Grid x:Name="gridSim" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Label Content="Nummer:" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <Label Content="Vorname:" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <Label Content="Familienname:" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <Label Content="Geschlecht:" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <Label Content="Geburtsdatum:" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <Label Content="Generation:" Grid.Column="0" Grid.Row="5" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <Label Content="Vater:" Grid.Column="0" Grid.Row="6" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <Label Content="Mutter:" Grid.Column="0" Grid.Row="7" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <Label Content="Partner:" Grid.Column="0" Grid.Row="8" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <Label Content="Lebt noch:" Grid.Column="0" Grid.Row="9" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <Label Content="Kinder:" Grid.Column="0" Grid.Row="10" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <Label Content="Geschwister:" Grid.Column="0" Grid.Row="11" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+                <Label Content="0" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="lblNummer"/>
+                <Label Content="-" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="lblVorname"/>
+                <Label Content="-" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="lblFamName"/>
+				<Label Content="-" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="lblGeschlecht"/>
+				<DockPanel Grid.Column="1" Grid.Row="4" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                    <Label Content="-" x:Name="lblGebDat" />
+                    <Label Content="-" x:Name="lblAlter" Width="30"/>
+                </DockPanel>
+                
+                <Label Content="-" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="lblGeneration"/>
+                <Label Content="-" Grid.Column="1" Grid.Row="6" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="lblVater" MouseDoubleClick="lblVater_MouseDoubleClick"/>
+                <Label Content="-" Grid.Column="1" Grid.Row="7" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="lblMutter" MouseDoubleClick="lblMutter_MouseDoubleClick"/>
+                <Label Content="-" Grid.Column="1" Grid.Row="8" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="lblPartner" MouseDoubleClick="lblPartner_MouseDoubleClick"/>
+				<Label Content="?" Grid.Column="1" Grid.Row="9" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="lblLebend"/>
+				<DockPanel Grid.Column="1" Grid.Row="10" HorizontalAlignment="Stretch" VerticalAlignment="Center" >
+                    <Label Content="0" x:Name="lblKinder" Width="30" />
+                    <ComboBox x:Name="cmbKinder" SelectionChanged="cmbKinder_SelectionChanged"/>
+                </DockPanel>
+                <DockPanel Grid.Column="1" Grid.Row="11" HorizontalAlignment="Stretch" VerticalAlignment="Center" >
+                    <Label Content="0" x:Name="lblGeschwister" Width="30" />
+                    <ComboBox x:Name="cmbGeschwister" SelectionChanged="cmbGeschwister_SelectionChanged"/>
+                </DockPanel>
+                
+            </Grid>
+            <Grid x:Name="eventLogGrid" Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="5"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="5"/>
+                </Grid.RowDefinitions>
+                <ListView x:Name="eventLog" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
