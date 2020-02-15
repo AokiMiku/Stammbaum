@@ -241,21 +241,20 @@
 		#endregion statische Methoden
 
 		#region Save-Methoden
-		//M090407 - Neu
-		public override bool Save() //R100301 public
+		public override bool Save()
 		{
 			bool bReturn = base.Save();
 
 			return bReturn;
 		}
-		//M090407 - Neu
+
 		public override bool Save(SqlAction eSqlAction)
 		{
 			bool bReturn = base.Save(eSqlAction);
 
 			return bReturn;
 		}
-		//M090407 - Neu
+
 		public override bool Save(SqlAction eSqlAction, string sWhere)
 		{
 			bool bReturn = base.Save(eSqlAction, sWhere);

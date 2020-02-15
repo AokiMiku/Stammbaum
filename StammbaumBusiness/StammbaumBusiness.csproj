@@ -48,7 +48,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Business.cs" />
+    <Compile Include="DbObjects\Business.cs" />
     <Compile Include="DbObjects\Einstellungen.cs" />
     <Compile Include="DbObjects\PersonenV.cs" />
     <Compile Include="DbObjects\Vornamen.cs" />
